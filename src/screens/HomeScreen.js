@@ -10,6 +10,7 @@ import ProfileScreen from '../components/ProfileScreen';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Animated } from 'react-native'; 
 
+
 const { width } = Dimensions.get('window');
 
 const carouselItems = [
@@ -98,17 +99,8 @@ const HomeScreen = () => {
   );
 };
 
-// const NotificationsScreen = () => (
-//   <View style={styles.screen}><Text>Notifications Screen</Text></View>
-// );
 const NotificationsScreen = () => <NotificationsList />;
 
-
-
-
-// const ProfileScreen = () => (
-//   <View style={styles.screen}><Text>Profile Screen</Text></View>
-// );
 
 const PlansScreen = () => (
   <ScrollView style={styles.container}>
@@ -161,70 +153,7 @@ const PlansScreen = () => (
   </ScrollView>
 );
 
-// const Tab = createBottomTabNavigator();
 
-// const App = () => {
-//   return (
-//           <SafeAreaView style={{flex:1}}> 
-//                 <StatusBar backgroundColor={'#fff'} barStyle={'dark-content'}/>
-//       <Tab.Navigator
-//        screenOptions={({ route }) => ({
-//         tabBarIcon: ({ color, size, focused }) => {
-//           if (route.name === 'Plans') {
-//             return (
-//               <View
-//                 style={{
-//                   width: 65,
-//                   height: 65,
-//                   borderRadius: 35,
-//                   backgroundColor: '#F7B500',
-//                   justifyContent: 'center',
-//                   alignItems: 'center',
-//                   marginBottom: Platform.OS === 'ios' ? 30 : 20, // Lifting star button
-//                   shadowColor: '#000',
-//                   shadowOffset: { width: 0, height: 2 },
-//                   shadowOpacity: 0.25,
-//                   shadowRadius: 3.84,
-//                   elevation: 5, // For Android shadow
-//                 }}
-//               >
-//                 <Ionicons name="star" size={32} color="#fff" />
-//               </View>
-//             );
-//           } else {
-//             let iconName;
-//             if (route.name === 'Home') iconName = 'home-outline';
-//             else if (route.name === 'Notifications') iconName = 'notifications-outline';
-//             else if (route.name === 'Messages') iconName = 'mail-outline';
-//             else if (route.name === 'Profile') iconName = 'person-outline';
-//             return <Ionicons name={iconName} size={24} color={color} />;
-//           }
-//         },
-//         tabBarActiveTintColor: '#F7B500',
-//         tabBarInactiveTintColor: 'gray',
-//         tabBarShowLabel: true,
-//         tabBarLabelStyle: { fontSize: 12, marginBottom: 4 },
-//         headerShown: false,
-//         tabBarStyle: {
-//           height: 65,
-//           backgroundColor: '#fff',
-//           borderTopLeftRadius: 20,
-//           borderTopRightRadius: 20,
-//           position: 'absolute',
-//           bottom: 0,
-//         },
-//       })}
-//       >
-//         <Tab.Screen name="Home" component={HomeScreen} />
-//         <Tab.Screen name="Notifications" component={NotificationsScreen} />
-//         <Tab.Screen name="Plans" component={PlansScreen} />
-//         <Tab.Screen name="Messages" component={MessagesScreen} />
-
-//         <Tab.Screen name="Profile" component={ProfileScreen} />
-//       </Tab.Navigator>
-// </SafeAreaView>
-//   );
-// };
 
 const Tab = createBottomTabNavigator();
 

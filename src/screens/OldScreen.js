@@ -322,7 +322,7 @@ const AgeScreen = ({ navigation }) => {
 
   const handleContinue = () => {
     if (selectedAge !== null) {
-      alert(`Selected Age: ${selectedAge}`);
+      // alert(`Selected Age: ${selectedAge}`);
       navigation.navigate('Weight', { age: selectedAge });
     }
   };

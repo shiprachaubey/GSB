@@ -39,6 +39,7 @@ const MessagesScreen = () => {
         <TextInput
           style={styles.input}
           placeholder="Type a message"
+          placeholderTextColor='#555'
           value={inputText}
           onChangeText={setInputText}
         />
@@ -102,6 +103,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f5f5f5',
     borderRadius: 20,
+    marginBottom:50,
     paddingHorizontal: 16,
     fontSize: 16,
   },
@@ -110,6 +112,7 @@ const styles = StyleSheet.create({
     width: 44,
     height: 44,
     borderRadius: 22,
+    marginBottom:50,
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: 8,
