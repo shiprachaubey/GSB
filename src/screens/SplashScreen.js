@@ -16,7 +16,7 @@ const WelcomeScreen = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.navigate('CarePlan');
+      navigation.navigate('Journey');
     }, 2000);
 
     return () => clearTimeout(timer); // cleanup on unmount

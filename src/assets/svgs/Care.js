@@ -3,9 +3,10 @@ import Svg, { G, Path, Defs } from "react-native-svg";
 /* SVGR has dropped some elements not supported by react-native-svg: filter */
 const Care = (props) => (
   <Svg
-    width={200}
+    width={400}
     height={300}
     viewBox="0 0 412 241"
+    preserveAspectRatio="none"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     {...props}

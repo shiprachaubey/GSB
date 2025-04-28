@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet, Dimensions } from 'react-native';
 const { width } = Dimensions.get('window');
 
-const JourneyScreen = () => {
+const JourneyScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       
@@ -32,11 +32,12 @@ const JourneyScreen = () => {
 
       {/* 🔸 Text Box */}
       <View style={styles.textBox}>
-        <Text style={styles.title}>Your journey to</Text>
-        <Text style={styles.title}>a happier,</Text>
-        <Text style={styles.title}>healthier gut</Text>
+        <Text style={styles.title}>GSBpathy is a science-backed Digital Therapeutics Brand</Text>
       </View>
 
+      <View style={styles.textBox}>
+        <Text style={styles.subtitle}>Experience the power of ancient heaking with modern science and unique blend of traditional wisdom scientific research brings you best of both worlds.</Text>
+      </View>
       {/* 🔸 Subtext */}
       <View style={styles.subTextBox}>
         <Text style={styles.subText}>Let’s walk it together</Text>
@@ -51,13 +52,11 @@ const JourneyScreen = () => {
 
       {/* 🔸 Navigation Buttons */}
       <View style={styles.bottomButtons}>
-  <TouchableOpacity>
-    <Text style={styles.skipText}>Skip</Text>
-    
-  </TouchableOpacity>
+  
 
-  <TouchableOpacity style={styles.nextButton}>
-    <Text style={styles.nextButtonText}>Next </Text>
+  <TouchableOpacity style={styles.nextButton}
+  onPress={() => navigation.navigate('Control')}>
+    <Text style={styles.nextButtonText}>Start </Text>
   </TouchableOpacity>
 </View>
 
@@ -81,28 +80,37 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 70,
+        marginTop: 50,
         marginBottom: 20,
       },
     image: {
         width: '100%',
-        height: '100%',
+        height: '90%',
         position: 'absolute', // places it below the inner image
       },
       innerImage: {
         width: 200,
-        height: 170,
+        height: 140,
       },
     textBox: {
       alignItems: 'center',
-      marginTop: 16,
+      marginTop: 0,
     },
     title: {
-      fontSize: 40,
+      fontSize: 20,
       fontWeight: '500',
       fontFamily: 'Frank Ruhl Libre',
       color: '#000',
       textAlign: 'center',
+    },
+    subtitle: {
+      fontSize: 15,
+      fontWeight: '400',
+      fontFamily: 'Frank Ruhl Libre',
+      color: '#000',
+      marginTop: -15,
+      
+      
     },
     subTextBox: {
       alignItems: 'center',
@@ -110,7 +118,7 @@ const styles = StyleSheet.create({
     },
     subText: {
       fontSize: 20,
-      color: '#00A394',
+      color: '#F7B500',
     },
     dotsBox: {
       flexDirection: 'row',
@@ -119,13 +127,13 @@ const styles = StyleSheet.create({
       marginBottom: 16,
     },
     dot: {
-      width: 10,
-      height: 10,
+      width: 12,
+      height: 12,
       borderRadius: 5,
       backgroundColor: '#E0E0E0',
     },
     activeDot: {
-      backgroundColor: '#00A394',
+      backgroundColor: '#F7B500',
     },
     bottomButtons: {
         flexDirection: 'column',
@@ -134,12 +142,7 @@ const styles = StyleSheet.create({
         marginBottom: 40,
         gap: 16, // add spacing between Skip and Next (RN >= 0.71)
       },
-      skipText: {
-        color: '#00A98F',
-        fontSize: 20,
-        fontWeight: '500',
-        fontFamily: 'Inria Sans',
-      },
+     
       nextButton: {
         backgroundColor: '#F7B500',
         paddingVertical: 12,
