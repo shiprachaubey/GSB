@@ -10,26 +10,27 @@ const OrdersScreen = () => {
   // Dummy Data
   const ordersData = {
     ToReceive: [
-      { id: '1', name: 'Product A', price: '$20', image: 'https://via.placeholder.com/100' },
-      { id: '2', name: 'Product B', price: '$35', image: 'https://via.placeholder.com/100' },
+      { id: '1', name: 'Product A', price: '$20', image: require('../assets/images/patanjali.png') },
+      { id: '2', name: 'Product B', price: '$35', image: require('../assets/images/patanjali.png') },
     ],
     Completed: [
-      { id: '3', name: 'Product C', price: '$50', image: 'https://via.placeholder.com/100' },
+      { id: '3', name: 'Product C', price: '$50', image: require('../assets/images/patanjali.png')  },
     ],
     Cancelled: [
-      { id: '4', name: 'Product D', price: '$15', image: 'https://via.placeholder.com/100' },
+      { id: '4', name: 'Product D', price: '$15', image: require('../assets/images/patanjali.png')  },
     ],
   };
 
   const renderOrderItem = ({ item }) => (
     <View style={styles.card}>
-      <Image source={{ uri: item.image }} style={styles.image} />
+      <Image source={item.image} style={styles.image} />
       <View style={{ marginLeft: 12 }}>
         <Text style={styles.name}>{item.name}</Text>
         <Text style={styles.price}>{item.price}</Text>
       </View>
     </View>
   );
+  
 
   return (
     <View style={styles.container}>

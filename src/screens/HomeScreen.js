@@ -85,10 +85,10 @@ const HomeScreen = () => {
     },
   ];
   const services = [
-    { title: 'GSB Pathy services', image: null ,  navigateTo: 'GSBPathy' }, // You will later set image
-    { title: 'Consultancy', image: null, navigateTo: 'Consultancy' },
-    { title: 'Supplements', image: null, navigateTo: 'Supplement' },
-    { title: 'Fitness', image: null, navigateTo: 'Fitness' },
+    { title: 'GSB Pathy services', image: require('../assets/images/pathy.jpeg') ,  navigateTo: 'GSBPathy' }, // You will later set image
+    { title: 'Consultancy',image: require('../assets/images/consultancy.png'), navigateTo: 'Consultancy' },
+    { title: 'Supplements', image: require('../assets/images/supplement.jpeg'), navigateTo: 'Supplement' },
+    { title: 'Fitness', image: require('../assets/images/fitnesgym.jpeg'), navigateTo: 'Fitness' },
   ];
   
 
@@ -151,41 +151,39 @@ services
 </View>
 
 {/* 1st row of 3 services */}
-<View style={styles.serviceCardRow}>
-  {services.slice(0, 3).map((item, idx) => (
-    <TouchableOpacity
-      key={idx}
-      style={styles.serviceCard}
-      onPress={() => {
-        if (item.navigateTo) {
-          navigation.navigate(item.navigateTo);
-        }
-      }}
-    >
-      <View style={styles.serviceImagePlaceholder}>
-        {/* Placeholder for images */}
-      </View>
-      <Text style={styles.serviceTitle}>{item.title}</Text>
-    </TouchableOpacity>
-  ))}
-</View>
 
-{/* 2nd row of 1 service centered */}
-<View style={{ alignItems: 'center', marginTop: 10 }}>
-  <TouchableOpacity
-    style={styles.serviceCard}
-    onPress={() => {
-      if (services[3].navigateTo) {
-        navigation.navigate(services[3].navigateTo);
-      }
-    }}
-  >
-    <View style={styles.serviceImagePlaceholder}>
-      {/* Placeholder for Fitness image */}
-    </View>
-    <Text style={styles.serviceTitle}>{services[3].title}</Text>
-  </TouchableOpacity>
-</View>
+
+<View style={styles.serviceCardRow}>
+        {services.slice(0, 3).map((item, idx) => (
+          <TouchableOpacity
+            key={idx}
+            style={styles.serviceCard}
+            onPress={() => {
+              if (item.navigateTo) {
+                navigation.navigate(item.navigateTo);
+              }
+            }}
+          >
+            <Image source={item.image} style={styles.serviceImage} />
+            <Text style={styles.serviceTitle}>{item.title}</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+
+      {/* 2nd row with 1 service centered */}
+      <View style={{ alignItems: 'center', marginTop: 10 }}>
+        <TouchableOpacity
+          style={styles.serviceCard}
+          onPress={() => {
+            if (services[3].navigateTo) {
+              navigation.navigate(services[3].navigateTo);
+            }
+          }}
+        >
+          <Image source={services[3].image} style={styles.serviceImage} />
+          <Text style={styles.serviceTitle}>{services[3].title}</Text>
+        </TouchableOpacity>
+      </View>
 
     </ScrollView>
   );
@@ -523,6 +521,7 @@ cardTitle: { fontSize: 16, fontWeight: '600', marginTop: 10, textAlign: 'center'
     alignItems: 'center',
     borderRadius: 12,
     marginHorizontal: 16,
+   
   },
   innerPeaceTitle: {
     fontSize: 26,
@@ -539,6 +538,7 @@ cardTitle: { fontSize: 16, fontWeight: '600', marginTop: 10, textAlign: 'center'
     justifyContent: 'space-between',
     paddingHorizontal: 30,
     marginTop: 10,
+   
   },
   card: {
     width: '30%',
@@ -548,6 +548,8 @@ cardTitle: { fontSize: 16, fontWeight: '600', marginTop: 10, textAlign: 'center'
     borderRadius: 10,
     alignItems: 'center',
     elevation: 3,
+    borderTopWidth: 4,
+  borderTopColor: '#FFD700', 
   },
   cardSingle: {
     width: '30%',
@@ -557,6 +559,9 @@ cardTitle: { fontSize: 16, fontWeight: '600', marginTop: 10, textAlign: 'center'
     borderRadius: 10,
     alignItems: 'center',
     elevation: 3,
+    borderTopWidth: 4,
+  borderTopColor: '#FFD700', 
+    borderTopColor: '#FFD700',
   },
   
   cardTitle: {
@@ -601,17 +606,18 @@ cardTitle: { fontSize: 16, fontWeight: '600', marginTop: 10, textAlign: 'center'
     width: '30%',
     backgroundColor: '#fff',
     paddingVertical: 16,
-    paddingHorizontal: 8,
+    paddingHorizontal: 6,
     borderRadius: 10,
     alignItems: 'center',
     elevation: 3,
+    borderWidth: 2,
+  borderColor: '#FFD700', 
   },
-  serviceImagePlaceholder: {
+  serviceImage: {
     width: 60,
     height: 60,
-    backgroundColor: '#eee',
-    borderRadius: 10,
-    marginBottom: 8,
+    marginBottom: 10,
+    borderRadius: 30,
   },
   serviceTitle: {
     fontSize: 14,

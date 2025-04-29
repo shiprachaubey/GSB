@@ -98,8 +98,9 @@ const styles = StyleSheet.create({
     },
     title: {
       fontSize: 20,
-      fontWeight: '500',
+      fontWeight: '800',
       fontFamily: 'Frank Ruhl Libre',
+
       color: '#000',
       textAlign: 'center',
     },
@@ -108,7 +109,7 @@ const styles = StyleSheet.create({
       fontWeight: '400',
       fontFamily: 'Frank Ruhl Libre',
       color: '#000',
-      marginTop: -15,
+      marginTop: -50,
       
       
     },
