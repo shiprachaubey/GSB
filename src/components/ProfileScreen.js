@@ -34,6 +34,8 @@ const ProfileScreen = ({navigation}) => {
           navigation.navigate('Notification');
         }else if (title === 'Message') {
           navigation.navigate('Message');
+        }else if (title === 'My Subscription') {
+          navigation.navigate('Plan');
         } else if (title === 'Call') {
           Linking.openURL('tel:9999999'); 
         } else if (title === 'Logout') {

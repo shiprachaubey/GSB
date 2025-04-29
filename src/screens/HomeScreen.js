@@ -1,5 +1,6 @@
+
 import React, { useRef, useEffect, useState } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Dimensions, FlatList, Platform, StatusBar } from 'react-native';
+import { View,Image, Text, ScrollView, TouchableOpacity, StyleSheet, Dimensions, FlatList, Platform, StatusBar } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -9,13 +10,18 @@ import MessagesScreen from '../components/MessageScreen';
 import ProfileScreen from '../components/ProfileScreen';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Animated } from 'react-native'; 
+// import PlanSection from '../components/PlanScreen';
+import { useNavigation } from '@react-navigation/native';  // 👈 Import this at top
+ // 👈 ADD THIS
 
 
 const { width } = Dimensions.get('window');
 
 const carouselItems = [
-  { title: 'Diet Plan' },
-  { title: 'IBS Treatment' },
+  { title: 'Mediation and Fitness Video' ,  image: require('../assets/images/fitness.png')},
+  { title: 'Connect with doctors' ,image: require('../assets/images/doctor.jpg') },
+  { title: 'Customised Diet Plans', image: require('../assets/images/dietplan.jpeg') },
+  { title: 'Follow us More ' , image: require('../assets/images/follow.png')},
 ];
 
 
@@ -43,20 +49,55 @@ const HomeScreen = () => {
   const handleScrollEndDrag = () => {
     setIsAutoPlay(true);
   };
-
+  const navigation = useNavigation();  
   const renderItem = ({ item }) => (
     <View style={styles.carouselItem}>
-      <View style={styles.carouselImagePlaceholder}>
-        <Text style={styles.carouselTitle}>{item.title}</Text>
-      </View>
+      <Image source={item.image} style={styles.carouselImage} />
+      <Text style={styles.carouselTitle}>{item.title}</Text>
     </View>
   );
-
-
- 
+  
+  const cards = [
+    { 
+      title: 'Meditation', 
+      desc: 'Guided meditation lessons to enhance your mindfulness journey.', 
+      image: require('../assets/images/meditation.png'),
+      navigateTo: 'MeditationScreen' 
+    },
+    { 
+      title: 'Education', 
+      desc: 'A wellness library with health videos and tips.', 
+      navigateTo: 'Education' ,
+      image: require('../assets/images/education-learning-8-svgrepo-com.png'),
+      
+    },
+    { 
+      title: 'Diet Plans', 
+      desc: 'A tailored diet plan designed exclusively for you.', 
+      navigateTo: 'DietPlan' ,
+      image: require('../assets/images/note.png'),
+    },
+    { 
+      title: 'Success Stories', 
+      desc: 'Watch stories of how people transformed their lives.', 
+      navigateTo: 'SucessStories' ,
+      image: require('../assets/images/Star.png'),
+    },
+  ];
+  const services = [
+    { title: 'GSB Pathy services', image: null ,  navigateTo: 'GSBPathy' }, // You will later set image
+    { title: 'Consultancy', image: null, navigateTo: 'Consultancy' },
+    { title: 'Supplements', image: null, navigateTo: 'Supplement' },
+    { title: 'Fitness', image: null, navigateTo: 'Fitness' },
+  ];
+  
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView
+    style={styles.container}
+    contentContainerStyle={{ paddingBottom: 120 }}  
+  >
+  
       <FlatList
         ref={flatListRef}
         data={carouselItems}
@@ -69,32 +110,83 @@ const HomeScreen = () => {
         onScrollEndDrag={handleScrollEndDrag}
       />
 
-      <View style={styles.yellowBox}>
-        <Text style={styles.sectionTitle}>Inner Peace</Text>
-        <Text style={styles.sectionSubtitle}>Discover balance and tranquility</Text>
-      </View>
-      <View style={styles.cardRow}>
-        {['Meditation', 'Education', 'Diet Plans', 'Success Stories'].map((title, idx) => (
-          <View key={idx} style={styles.card}>
-            <Ionicons name="ios-star-outline" size={30} color="#F7B500" />
-            <Text style={styles.cardTitle}>{title}</Text>
-            <Text style={styles.cardDesc}>Short description text.</Text>
-          </View>
-        ))}
-      </View>
+<View style={styles.innerPeaceContainer}>
+  <Text style={styles.innerPeaceTitle}>Inner Peace</Text>
+  <Text style={styles.innerPeaceSubtitle}>Discover balance and tranquility</Text>
+</View>
+services
+<View style={styles.cardRow}>
+  {cards.slice(0, 3).map((item, idx) => (
+    <TouchableOpacity
+      key={idx}
+      style={styles.card}
+      onPress={() => navigation.navigate(item.navigateTo)}
+    >
+      <Image source={item.image} style={styles.cardImage} />   {/* 👈 Image here */}
+      <Text style={styles.cardTitle}>{item.title}</Text>
+      <Text style={styles.cardDesc}>{item.desc}</Text>
+    </TouchableOpacity>
+  ))}
+</View>
 
-      <View style={styles.yellowBox}>
-        <Text style={styles.sectionTitle}>Our Services</Text>
-        <Text style={styles.sectionSubtitle}>Find out services which works best for you</Text>
+
+{/* 2nd row with Success Stories centered */}
+<View style={{ alignItems: 'center', marginTop: 10 }}>
+  <TouchableOpacity
+    style={styles.cardSingle}
+    onPress={() => navigation.navigate(cards[3].navigateTo)}
+  >
+    <Image source={cards[3].image} style={styles.cardImage} />  {/* 👈 Add this image */}
+    <Text style={styles.cardTitle}>{cards[3].title}</Text>
+    <Text style={styles.cardDesc}>{cards[3].desc}</Text>
+  </TouchableOpacity>
+</View>
+
+
+
+      {/* Our Services Section */}
+<View style={styles.servicesContainer}>
+  <Text style={styles.servicesTitle}>Our Services</Text>
+  <Text style={styles.servicesSubtitle}>Find out services which works best for you</Text>
+</View>
+
+{/* 1st row of 3 services */}
+<View style={styles.serviceCardRow}>
+  {services.slice(0, 3).map((item, idx) => (
+    <TouchableOpacity
+      key={idx}
+      style={styles.serviceCard}
+      onPress={() => {
+        if (item.navigateTo) {
+          navigation.navigate(item.navigateTo);
+        }
+      }}
+    >
+      <View style={styles.serviceImagePlaceholder}>
+        {/* Placeholder for images */}
       </View>
-      <View style={styles.cardRow}>
-        {['GSB Pathy services', 'Consultancy', 'Supplements', 'Fitness'].map((title, idx) => (
-          <View key={idx} style={styles.card}>
-            <MaterialCommunityIcons name="briefcase-outline" size={30} color="#F7B500" />
-            <Text style={styles.cardTitle}>{title}</Text>
-          </View>
-        ))}
-      </View>
+      <Text style={styles.serviceTitle}>{item.title}</Text>
+    </TouchableOpacity>
+  ))}
+</View>
+
+{/* 2nd row of 1 service centered */}
+<View style={{ alignItems: 'center', marginTop: 10 }}>
+  <TouchableOpacity
+    style={styles.serviceCard}
+    onPress={() => {
+      if (services[3].navigateTo) {
+        navigation.navigate(services[3].navigateTo);
+      }
+    }}
+  >
+    <View style={styles.serviceImagePlaceholder}>
+      {/* Placeholder for Fitness image */}
+    </View>
+    <Text style={styles.serviceTitle}>{services[3].title}</Text>
+  </TouchableOpacity>
+</View>
+
     </ScrollView>
   );
 };
@@ -102,57 +194,177 @@ const HomeScreen = () => {
 const NotificationsScreen = () => <NotificationsList />;
 
 
-const PlansScreen = () => (
-  <ScrollView style={styles.container}>
-    <View style={styles.planHeader}>
-      <Text style={styles.sectionTitle}>Choose Your Plan</Text>
-      <Text style={styles.sectionSubtitle}>Select the plan that best fits your health journey needs</Text>
-    </View>
+// const PlansScreen = () => {
+//   const [selectedPlan, setSelectedPlan] = useState(null);
+// return (
+//   <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 100 }}>
+//     <View style={styles.planHeader}>
+//       <Text style={styles.sectionTitle}>Choose Your Plan</Text>
+//       <Text style={styles.sectionSubtitle}>Select the plan that best fits your health journey needs</Text>
+//     </View>
 
-    <View style={styles.planBoxPrimary}>
-      <View style={styles.planTopYellow}>
-        <Text style={styles.planBoxTitle}>Premium Plan</Text>
-        <Text style={styles.planBoxPrice}>$29.99/month</Text>
+//     <View style={styles.planBoxPrimary}>
+//       <View style={styles.planTopYellow}>
+//         <Text style={styles.planBoxTitle}>Premium Plan</Text>
+//         <Text style={styles.planBoxPrice}>$29.99/month</Text>
+//       </View>
+//       <View style={styles.planFeaturesBox}>
+//         {["Unlimited appointment with a Clinical nutritionist",
+//           "Customized Non-Drug Treatment Plan",
+//           "Regular Consultations & Progress Tracking",
+//           "Daily Follow-Up Calls to Monitor Your Progress",
+//           "Unlimited Counseling Sessions with a Health Coach",
+//           "Unlimited Diet Modifications",
+//           "Holistic Support for Long-Lasting Results",
+//           "Comprehensive Lifestyle & Emotional Well-Being Guidance",
+//           "Stress management",
+//           "Behaviour counselling",
+//           "Dietary supplements suggestion"].map((text, idx) => (
+//             <Text key={idx} style={styles.planFeatureText}>✅ {text}</Text>
+//           ))}
+//        <TouchableOpacity
+//   style={[
+//     styles.selectButton,
+//     selectedPlan === 'premium' && styles.selectedButtonYellow,
+//   ]}
+//   onPress={() => setSelectedPlan('premium')}
+// >
+//   <Text style={[
+//     styles.selectButtonText,
+//     selectedPlan === 'premium' && styles.selectButtonTextBlack
+//   ]}>
+//     Select Premium
+//   </Text>
+// </TouchableOpacity>
+
+//       </View>
+//     </View>
+
+//     <View style={styles.planBoxSecondary}>
+//       <View style={styles.planTopBorderYellow}>
+//         <Text style={styles.planBoxTitle}>Freemium Plan</Text>
+//         <Text style={styles.planBoxPrice}>$9.99/month</Text>
+//       </View>
+//       <View style={styles.planFeaturesBox}>
+//         {['One time treatment plan as per problem',
+//           'One time appointment with health coach',
+//           'Behaviour management',
+//           'Dietary supplements suggestion'].map((text, idx) => (
+//           <Text key={idx} style={styles.planFeatureText}>✅ {text}</Text>
+//         ))}
+//         <TouchableOpacity style={styles.selectButtonYellow}><Text style={styles.selectButtonTextBlack}>Select Freemium</Text></TouchableOpacity>
+//       </View>
+//     </View>
+
+//     <TouchableOpacity style={styles.subscribeButton}><Text style={styles.subscribeButtonText}>Subscribe to Freemium Plan</Text></TouchableOpacity>
+
+//     <Text style={styles.bottomNote}>You can cancel your subscription anytime</Text>
+//   </ScrollView>
+// )};
+
+const PlansScreen = () => {
+  const [selectedPlan, setSelectedPlan] = useState(null);
+
+  return (
+    <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 100 }}>
+      <View style={styles.planHeader}>
+        <Text style={styles.sectionTitle}>Choose Your Plan</Text>
+        <Text style={styles.sectionSubtitle}>Select the plan that best fits your health journey needs</Text>
       </View>
-      <View style={styles.planFeaturesBox}>
-        {["Unlimited appointment with a Clinical nutritionist",
-          "Customized Non-Drug Treatment Plan",
-          "Regular Consultations & Progress Tracking",
-          "Daily Follow-Up Calls to Monitor Your Progress",
-          "Unlimited Counseling Sessions with a Health Coach",
-          "Unlimited Diet Modifications",
-          "Holistic Support for Long-Lasting Results",
-          "Comprehensive Lifestyle & Emotional Well-Being Guidance",
-          "Stress management",
-          "Behaviour counselling",
-          "Dietary supplements suggestion"].map((text, idx) => (
+
+      {/* Premium Plan */}
+      <View style={styles.planBoxPrimary}>
+        <View style={styles.planTopYellow}>
+          <Text style={styles.planBoxTitle}>Premium Plan</Text>
+          <Text style={styles.planBoxPrice}>$29.99/month</Text>
+        </View>
+        <View style={styles.planFeaturesBox}>
+          {[
+            "Unlimited appointment with a Clinical nutritionist",
+            "Customized Non-Drug Treatment Plan",
+            "Regular Consultations & Progress Tracking",
+            "Daily Follow-Up Calls to Monitor Your Progress",
+            "Unlimited Counseling Sessions with a Health Coach",
+            "Unlimited Diet Modifications",
+            "Holistic Support for Long-Lasting Results",
+            "Comprehensive Lifestyle & Emotional Well-Being Guidance",
+            "Stress management",
+            "Behaviour counselling",
+            "Dietary supplements suggestion",
+          ].map((text, idx) => (
             <Text key={idx} style={styles.planFeatureText}>✅ {text}</Text>
           ))}
-        <TouchableOpacity style={styles.selectButton}><Text style={styles.selectButtonText}>Select Premium</Text></TouchableOpacity>
-      </View>
-    </View>
 
-    <View style={styles.planBoxSecondary}>
-      <View style={styles.planTopBorderYellow}>
-        <Text style={styles.planBoxTitle}>Freemium Plan</Text>
-        <Text style={styles.planBoxPrice}>$9.99/month</Text>
+          <TouchableOpacity
+            style={[
+              styles.selectButton,
+              selectedPlan === 'premium'
+                ? styles.selectedButtonYellow
+                : styles.unselectedButtonGray,
+            ]}
+            onPress={() => setSelectedPlan('premium')}
+          >
+            <Text
+              style={[
+                styles.selectButtonText,
+                selectedPlan === 'premium'
+                  ? styles.selectButtonTextBlack
+                  : styles.selectButtonTextGray,
+              ]}
+            >
+              Select Premium
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      <View style={styles.planFeaturesBox}>
-        {['One time treatment plan as per problem',
-          'One time appointment with health coach',
-          'Behaviour management',
-          'Dietary supplements suggestion'].map((text, idx) => (
-          <Text key={idx} style={styles.planFeatureText}>✅ {text}</Text>
-        ))}
-        <TouchableOpacity style={styles.selectButtonYellow}><Text style={styles.selectButtonTextBlack}>Select Freemium</Text></TouchableOpacity>
+
+      {/* Freemium Plan */}
+      <View style={styles.planBoxSecondary}>
+        <View style={styles.planTopBorderYellow}>
+          <Text style={styles.planBoxTitle}>Freemium Plan</Text>
+          <Text style={styles.planBoxPrice}>$9.99/month</Text>
+        </View>
+        <View style={styles.planFeaturesBox}>
+          {[
+            'One time treatment plan as per problem',
+            'One time appointment with health coach',
+            'Behaviour management',
+            'Dietary supplements suggestion',
+          ].map((text, idx) => (
+            <Text key={idx} style={styles.planFeatureText}>✅ {text}</Text>
+          ))}
+
+          <TouchableOpacity
+            style={[
+              styles.selectButton,
+              selectedPlan === 'freemium'
+                ? styles.selectedButtonYellow
+                : styles.unselectedButtonGray,
+            ]}
+            onPress={() => setSelectedPlan('freemium')}
+          >
+            <Text
+              style={[
+                styles.selectButtonText,
+                selectedPlan === 'freemium'
+                  ? styles.selectButtonTextBlack
+                  : styles.selectButtonTextGray,
+              ]}
+            >
+              Select Freemium
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
 
-    <TouchableOpacity style={styles.subscribeButton}><Text style={styles.subscribeButtonText}>Subscribe to Freemium Plan</Text></TouchableOpacity>
-    <Text style={styles.bottomNote}>You can cancel your subscription anytime</Text>
-  </ScrollView>
-);
+    
 
+      <TouchableOpacity style={styles.subscribeButton}><Text style={styles.subscribeButtonText}>Subscribe to Freemium Plan</Text></TouchableOpacity>
+
+      <Text style={styles.bottomNote}>You can cancel your subscription anytime</Text>
+    </ScrollView>
+  );
+};
 
 
 const Tab = createBottomTabNavigator();
@@ -195,7 +407,7 @@ const App = () => {
               backgroundColor: '#F7B500',
               justifyContent: 'center',
               alignItems: 'center',
-              marginBottom: Platform.OS === 'ios' ? 30 : 20,
+              marginBottom: Platform.OS === 'ios' ? 5 : 0,
               shadowColor: '#000',
               shadowOffset: { width: 0, height: 2 },
               shadowOpacity: 0.25,
@@ -260,6 +472,7 @@ const App = () => {
 export default App;
 
 const styles = StyleSheet.create({
+  
   container: { flex: 1, backgroundColor: '#fff' },
   carouselItem: { width, alignItems: 'center' },
   carouselImagePlaceholder: { width: width * 0.9, height: 200, borderRadius: 10, backgroundColor: '#eee', justifyContent: 'center', alignItems: 'center', marginTop: 10 },
@@ -267,9 +480,9 @@ const styles = StyleSheet.create({
   yellowBox: { marginTop: 20, marginHorizontal: 20, padding: 16, borderWidth: 2, borderColor: '#F7B500', borderRadius: 12, alignItems: 'center' },
   sectionTitle: { fontSize: 24, fontWeight: '700', color: '#000', textAlign: 'center' },
   sectionSubtitle: { fontSize: 14, color: '#555', textAlign: 'center', marginTop: 8 },
-  cardRow: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', paddingHorizontal: 24, marginTop: 10 },
-  card: { width: '47%', backgroundColor: '#fff', padding: 16, marginVertical: 8, borderRadius: 10, alignItems: 'center', elevation: 3 },
-  cardTitle: { fontSize: 16, fontWeight: '600', marginTop: 10, textAlign: 'center', color: '#000' },
+  // cardRow: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', paddingHorizontal: 24, marginTop: 10 },
+  // card: { width: '47%', backgroundColor: '#fff', padding: 16, marginVertical: 8, borderRadius: 10, alignItems: 'center', elevation: 3 },
+cardTitle: { fontSize: 16, fontWeight: '600', marginTop: 10, textAlign: 'center', color: '#000' },
   cardDesc: { fontSize: 12, textAlign: 'center', color: '#777', marginTop: 4 },
   screen: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   planHeader: { marginVertical: 20, alignItems: 'center', paddingHorizontal: 20 },
@@ -286,6 +499,150 @@ const styles = StyleSheet.create({
   selectButtonYellow: { backgroundColor: '#F7B500', marginTop: 12, paddingVertical: 12, borderRadius: 8, alignItems: 'center' },
   selectButtonTextBlack: { fontWeight: '700', fontSize: 16, color: '#000' },
   subscribeButton: { backgroundColor: '#F7B500', margin: 24, paddingVertical: 14, borderRadius: 8, alignItems: 'center' },
-  subscribeButtonText: { fontWeight: '700', fontSize: 18, color: '#fff' },
+  subscribeButtonText: { fontWeight: '700', fontSize: 18, color: '#555' },
   bottomNote: { textAlign: 'center', fontSize: 12, color: '#777', marginBottom: 20 },
+  cardImage: {
+    width: 80,
+    height: 80,
+    resizeMode: 'contain',
+    marginBottom: 10,
+  },
+  carouselImage: {
+    width: width * 0.9,
+    height: 200,
+    borderRadius: 10,
+    resizeMode: 'cover',
+    marginBottom: 10,
+  },
+  
+  innerPeaceContainer: {
+    marginTop: 20,
+    marginBottom: 20,
+    paddingVertical: 30,
+    backgroundColor: '#F7B500',
+    alignItems: 'center',
+    borderRadius: 12,
+    marginHorizontal: 16,
+  },
+  innerPeaceTitle: {
+    fontSize: 26,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  innerPeaceSubtitle: {
+    fontSize: 14,
+    color: '#333',
+    marginTop: 8,
+  },
+  cardRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 30,
+    marginTop: 10,
+  },
+  card: {
+    width: '30%',
+    backgroundColor: '#fff',
+    padding: 16,
+    marginVertical: 18,
+    borderRadius: 10,
+    alignItems: 'center',
+    elevation: 3,
+  },
+  cardSingle: {
+    width: '30%',
+    backgroundColor: '#fff',
+    padding: 16,
+    marginVertical: 8,
+    borderRadius: 10,
+    alignItems: 'center',
+    elevation: 3,
+  },
+  
+  cardTitle: {
+    fontSize: 16,
+    fontWeight: '700',
+    marginTop: 8,
+    textAlign: 'center',
+    color: '#000',
+  },
+  cardDesc: {
+    fontSize: 12,
+    textAlign: 'center',
+    color: '#777',
+    marginTop: 6,
+  },
+  servicesContainer: {
+    marginTop: 20,
+    marginBottom: 20,
+    paddingVertical: 30,
+    backgroundColor: '#F7B500',
+    alignItems: 'center',
+    borderRadius: 12,
+    marginHorizontal: 16,
+  },
+  servicesTitle: {
+    fontSize: 26,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  servicesSubtitle: {
+    fontSize: 14,
+    color: '#333',
+    marginTop: 8,
+  },
+  serviceCardRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 50,
+    marginTop: 10,
+  },
+  serviceCard: {
+    width: '30%',
+    backgroundColor: '#fff',
+    paddingVertical: 16,
+    paddingHorizontal: 8,
+    borderRadius: 10,
+    alignItems: 'center',
+    elevation: 3,
+  },
+  serviceImagePlaceholder: {
+    width: 60,
+    height: 60,
+    backgroundColor: '#eee',
+    borderRadius: 10,
+    marginBottom: 8,
+  },
+  serviceTitle: {
+    fontSize: 14,
+    fontWeight: '600',
+    textAlign: 'center',
+    color: '#000',
+  },
+  selectedButtonYellow: {
+    backgroundColor: '#F7B500',
+    borderRadius: 10,
+    paddingVertical: 12,
+    alignItems: 'center',
+  },
+  
+  unselectedButtonGray: {
+    backgroundColor: '#E0E0E0',
+    borderRadius: 10,
+    paddingVertical: 12,
+    alignItems: 'center',
+  },
+  
+  selectButtonTextBlack: {
+    color: '#000',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+  
+  selectButtonTextGray: {
+    color: '#666',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+  
 });

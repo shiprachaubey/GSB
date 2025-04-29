@@ -34,7 +34,7 @@ const WelcomeScreen = () => {
      
       <View style={{  alignItems: 'center', justifyContent:"center",height:'20%'}}>
   <Text style={styles.title}>GSBpathy</Text>
-  <Text style={styles.subtitle}>IBS, Colitis & Crohn’s Management</Text>
+  <Text style={styles.subtitle}>IBS, Colitis & Crohn's Management</Text>
 </View>
 
 <View style={[styles.bottomContainer,{height:"40%"}]}>

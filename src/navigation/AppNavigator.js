@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import SplashScreen from '../screens/SplashScreen';
-
+import PlanScreen from '../screens/PlanScreen';
 import JourneyScreen from '../screens/JourneyScreen';
 import ControlScreen from '../screens/ControlScreen';
 import EatScreen from '../screens/EatScreen';
@@ -23,7 +23,13 @@ import NotificationsList from '../screens/NotidicationScreen';
 import MessageScreen from '../screens/MessageScreen';
 import DailyUpdatesScreen from '../screens/DailyUpdateScreen';
 import NewDailyUpdateScreen from '../screens/NewDailyUpdateScreen';
-
+import GSBPathyServicesScreen from '../screens/GSBPathyServicesScreen';
+import SupplementScreen from '../screens/SupplementScreen';
+import MeditationScreen from '../screens/MeditationScree';
+import EducationScreen from '../screens/EducationScreen';
+import FitnessScreen from '../screens/FitnessScreen';
+import DietPlanScreen from '../screens/DietPlanScreen';
+import SuccessStoriesScreen from '../screens/SuccessScreen';
 const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
@@ -51,6 +57,15 @@ const AppNavigator = () => {
   <Stack.Screen name="Message" component={MessageScreen} options={{ headerShown: false }} />
   <Stack.Screen name="DailyUpdates" component={DailyUpdatesScreen} options={{ headerShown: false }} />
   <Stack.Screen name="NewDailyUpdate" component={NewDailyUpdateScreen} options={{ headerShown: false }} />
+  <Stack.Screen name="Plan" component={PlanScreen} options={{ headerShown: false }} />
+  <Stack.Screen name="GSBPathy" component={GSBPathyServicesScreen} options={{ headerShown: false }} />
+  <Stack.Screen name="Supplement" component={SupplementScreen} options={{ headerShown: false }} />
+  <Stack.Screen name="Education" component={EducationScreen} options={{ headerShown: false }} />
+  <Stack.Screen name="DietPlan" component={DietPlanScreen} options={{ headerShown: false }} />
+  <Stack.Screen name="SucessStories" component={SuccessStoriesScreen} options={{ headerShown: false }} />
+  <Stack.Screen name="MeditationScreen" component={MeditationScreen} options={{ headerShown: false }} />
+  <Stack.Screen name="Fitness" component={FitnessScreen} options={{ headerShown: false }} />
+
 
 
 </Stack.Navigator>
