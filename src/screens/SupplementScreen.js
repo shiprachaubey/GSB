@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, StatusBar } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const SupplementsScreen = () => {
   const navigation = useNavigation();
@@ -30,6 +31,8 @@ const SupplementsScreen = () => {
   ];
 
   return (
+     <SafeAreaView style={{flex:1}}> 
+        <StatusBar backgroundColor={'#fff'} barStyle={'dark-content'}/>
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
@@ -53,6 +56,7 @@ const SupplementsScreen = () => {
         </View>
       </ScrollView>
     </View>
+    </SafeAreaView>
   );
 };
 

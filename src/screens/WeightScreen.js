@@ -63,7 +63,7 @@ const BodyMeasurementsScreen = ({ navigation }) => {
           {/* Top Circle and Measurement Image */}
           <View style={styles.imageBox}>
             <Image source={require('../assets/images/circle.png')} style={styles.circleImage} resizeMode="contain" />
-            {/* <Image source={require('../assets/images/body_measurement.png')} style={styles.innerImage} resizeMode="contain" /> */}
+           <Image source={require('../assets/images/Measure.jpg')} style={styles.innerImage} resizeMode="contain" /> 
           </View>
 
           {/* Title and Subtitle */}
@@ -133,13 +133,13 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   circleImage: {
-    width: 200,
-    height: 200,
+    width: 260,
+    height: 260,
   },
   innerImage: {
     position: 'absolute',
-    width: 100,
-    height: 100,
+    width: 150,
+    height: 200,
   },
   title: {
     fontSize: 24,

@@ -17,17 +17,17 @@ const JourneyScreen = ({ navigation }) => {
 <View style={styles.imageBox}>
   {/* Background Circle Image */}
   <Image 
-    source={require('../assets/images/circle.png')} 
+    source={require('../assets/images/tree.jpeg')} 
     style={styles.image} 
     resizeMode="contain" 
   />
 
   {/* Inner PNG (e.g. a person/meditation/etc) */}
-  <Image 
+  {/* <Image 
     source={require('../assets/images/Untitled.png')} 
     style={styles.innerImage} 
     resizeMode="contain" 
-  />
+  /> */}
 </View>
 
 
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
       },
     image: {
         width: '100%',
-        height: '90%',
+        height: '100%',
         position: 'absolute', // places it below the inner image
       },
       innerImage: {
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
       fontFamily: 'Frank Ruhl Libre',
       color: '#000',
       marginTop: -40,
-      
+      textAlign: 'center',
       
     },
     subTextBox: {

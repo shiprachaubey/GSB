@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking, Image } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking, Image , StatusBar} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
-
+import { SafeAreaView } from 'react-native-safe-area-context';
 const GSBPathyServicesScreen = () => {
   const navigation = useNavigation();
 
@@ -21,7 +21,7 @@ const GSBPathyServicesScreen = () => {
     {
         title: ' Crohn ',
         description: 'Chronic inflammatory bowel disease affecting the colon, causing abdominal pain, diarrhea, and rectal bleeding.',
-        image: require('../assets/images/crohns.png'), 
+        image: require('../assets/images/Crohns.jpeg'), 
       },
  
   ];
@@ -35,6 +35,8 @@ const GSBPathyServicesScreen = () => {
   };
 
   return (
+     <SafeAreaView style={{flex:1}}> 
+        <StatusBar backgroundColor={'#fff'} barStyle={'dark-content'}/>
     <ScrollView style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
@@ -66,6 +68,7 @@ const GSBPathyServicesScreen = () => {
         </View>
       ))}
     </ScrollView>
+    </SafeAreaView>
   );
 };
 

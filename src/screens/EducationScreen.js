@@ -1,10 +1,10 @@
 
 import React, { useState, useRef } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, StatusBar, TouchableOpacity, Linking, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Video from 'react-native-video';
-
+import { SafeAreaView } from 'react-native-safe-area-context';
 const windowHeight = Dimensions.get('window').height;
 
 const EducationScreen = () => {
@@ -42,6 +42,8 @@ const EducationScreen = () => {
   const videoLayouts = {};
 
   return (
+     <SafeAreaView style={{flex:1}}> 
+        <StatusBar backgroundColor={'#fff'} barStyle={'dark-content'}/>
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
@@ -105,6 +107,7 @@ const EducationScreen = () => {
 
       </ScrollView>
     </View>
+    </SafeAreaView>
   );
 };
 

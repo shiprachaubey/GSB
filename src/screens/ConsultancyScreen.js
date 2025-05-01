@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Alert , StatusBar} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
-
+import { SafeAreaView } from 'react-native-safe-area-context';
 const ConsultancyScreen = () => {
   const navigation = useNavigation();
 
@@ -27,6 +27,8 @@ const ConsultancyScreen = () => {
   };
 
   return (
+     <SafeAreaView style={{flex:1}}> 
+        <StatusBar backgroundColor={'#fff'} barStyle={'dark-content'}/>
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
@@ -105,6 +107,7 @@ const ConsultancyScreen = () => {
         </TouchableOpacity>
       </ScrollView>
     </View>
+    </SafeAreaView>
   );
 };
 

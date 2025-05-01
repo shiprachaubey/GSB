@@ -21,7 +21,7 @@ const carouselItems = [
   { title: 'Mediation and Fitness Video' ,  image: require('../assets/images/fitness.png')},
   { title: 'Connect with doctors' ,image: require('../assets/images/doctor.jpg') },
   { title: 'Customised Diet Plans', image: require('../assets/images/dietplan.jpeg') },
-  { title: 'Follow us More ' , image: require('../assets/images/follow.png')},
+  { title: 'Follow us More ' , image: require('../assets/images/followus.webp')},
 ];
 
 
@@ -86,7 +86,7 @@ const HomeScreen = () => {
   ];
   const services = [
     { title: 'GSB Pathy services', image: require('../assets/images/pathy.jpeg') ,  navigateTo: 'GSBPathy' }, // You will later set image
-    { title: 'Consultancy',image: require('../assets/images/consultancy.png'), navigateTo: 'Consultancy' },
+    { title: 'Consultancy',image: require('../assets/images/doctorconsult.jpg'), navigateTo: 'Consultancy' },
     { title: 'Supplements', image: require('../assets/images/supplement.jpeg'), navigateTo: 'Supplement' },
     { title: 'Fitness', image: require('../assets/images/fitnesgym.jpeg'), navigateTo: 'Fitness' },
   ];
@@ -114,15 +114,15 @@ const HomeScreen = () => {
   <Text style={styles.innerPeaceTitle}>Inner Peace</Text>
   <Text style={styles.innerPeaceSubtitle}>Discover balance and tranquility</Text>
 </View>
-services
-<View style={styles.cardRow}>
-  {cards.slice(0, 3).map((item, idx) => (
+
+<View style={styles.cardGrid}>
+  {cards.map((item, idx) => (
     <TouchableOpacity
       key={idx}
       style={styles.card}
       onPress={() => navigation.navigate(item.navigateTo)}
     >
-      <Image source={item.image} style={styles.cardImage} />   {/* 👈 Image here */}
+      <Image source={item.image} style={styles.cardImage} />
       <Text style={styles.cardTitle}>{item.title}</Text>
       <Text style={styles.cardDesc}>{item.desc}</Text>
     </TouchableOpacity>
@@ -130,17 +130,6 @@ services
 </View>
 
 
-{/* 2nd row with Success Stories centered */}
-<View style={{ alignItems: 'center', marginTop: 10 }}>
-  <TouchableOpacity
-    style={styles.cardSingle}
-    onPress={() => navigation.navigate(cards[3].navigateTo)}
-  >
-    <Image source={cards[3].image} style={styles.cardImage} />  {/* 👈 Add this image */}
-    <Text style={styles.cardTitle}>{cards[3].title}</Text>
-    <Text style={styles.cardDesc}>{cards[3].desc}</Text>
-  </TouchableOpacity>
-</View>
 
 
 
@@ -152,38 +141,24 @@ services
 
 {/* 1st row of 3 services */}
 
+<View style={styles.serviceGrid}>
+  {services.map((item, idx) => (
+    <TouchableOpacity
+      key={idx}
+      style={styles.serviceCard}
+      onPress={() => {
+        if (item.navigateTo) {
+          navigation.navigate(item.navigateTo);
+        }
+      }}
+    >
+      <Image source={item.image} style={styles.serviceImage} />
+      <Text style={styles.serviceTitle}>{item.title}</Text>
+    </TouchableOpacity>
+  ))}
+</View>
 
-<View style={styles.serviceCardRow}>
-        {services.slice(0, 3).map((item, idx) => (
-          <TouchableOpacity
-            key={idx}
-            style={styles.serviceCard}
-            onPress={() => {
-              if (item.navigateTo) {
-                navigation.navigate(item.navigateTo);
-              }
-            }}
-          >
-            <Image source={item.image} style={styles.serviceImage} />
-            <Text style={styles.serviceTitle}>{item.title}</Text>
-          </TouchableOpacity>
-        ))}
-      </View>
 
-      {/* 2nd row with 1 service centered */}
-      <View style={{ alignItems: 'center', marginTop: 10 }}>
-        <TouchableOpacity
-          style={styles.serviceCard}
-          onPress={() => {
-            if (services[3].navigateTo) {
-              navigation.navigate(services[3].navigateTo);
-            }
-          }}
-        >
-          <Image source={services[3].image} style={styles.serviceImage} />
-          <Text style={styles.serviceTitle}>{services[3].title}</Text>
-        </TouchableOpacity>
-      </View>
 
     </ScrollView>
   );
@@ -191,74 +166,6 @@ services
 
 const NotificationsScreen = () => <NotificationsList />;
 
-
-// const PlansScreen = () => {
-//   const [selectedPlan, setSelectedPlan] = useState(null);
-// return (
-//   <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 100 }}>
-//     <View style={styles.planHeader}>
-//       <Text style={styles.sectionTitle}>Choose Your Plan</Text>
-//       <Text style={styles.sectionSubtitle}>Select the plan that best fits your health journey needs</Text>
-//     </View>
-
-//     <View style={styles.planBoxPrimary}>
-//       <View style={styles.planTopYellow}>
-//         <Text style={styles.planBoxTitle}>Premium Plan</Text>
-//         <Text style={styles.planBoxPrice}>$29.99/month</Text>
-//       </View>
-//       <View style={styles.planFeaturesBox}>
-//         {["Unlimited appointment with a Clinical nutritionist",
-//           "Customized Non-Drug Treatment Plan",
-//           "Regular Consultations & Progress Tracking",
-//           "Daily Follow-Up Calls to Monitor Your Progress",
-//           "Unlimited Counseling Sessions with a Health Coach",
-//           "Unlimited Diet Modifications",
-//           "Holistic Support for Long-Lasting Results",
-//           "Comprehensive Lifestyle & Emotional Well-Being Guidance",
-//           "Stress management",
-//           "Behaviour counselling",
-//           "Dietary supplements suggestion"].map((text, idx) => (
-//             <Text key={idx} style={styles.planFeatureText}>✅ {text}</Text>
-//           ))}
-//        <TouchableOpacity
-//   style={[
-//     styles.selectButton,
-//     selectedPlan === 'premium' && styles.selectedButtonYellow,
-//   ]}
-//   onPress={() => setSelectedPlan('premium')}
-// >
-//   <Text style={[
-//     styles.selectButtonText,
-//     selectedPlan === 'premium' && styles.selectButtonTextBlack
-//   ]}>
-//     Select Premium
-//   </Text>
-// </TouchableOpacity>
-
-//       </View>
-//     </View>
-
-//     <View style={styles.planBoxSecondary}>
-//       <View style={styles.planTopBorderYellow}>
-//         <Text style={styles.planBoxTitle}>Freemium Plan</Text>
-//         <Text style={styles.planBoxPrice}>$9.99/month</Text>
-//       </View>
-//       <View style={styles.planFeaturesBox}>
-//         {['One time treatment plan as per problem',
-//           'One time appointment with health coach',
-//           'Behaviour management',
-//           'Dietary supplements suggestion'].map((text, idx) => (
-//           <Text key={idx} style={styles.planFeatureText}>✅ {text}</Text>
-//         ))}
-//         <TouchableOpacity style={styles.selectButtonYellow}><Text style={styles.selectButtonTextBlack}>Select Freemium</Text></TouchableOpacity>
-//       </View>
-//     </View>
-
-//     <TouchableOpacity style={styles.subscribeButton}><Text style={styles.subscribeButtonText}>Subscribe to Freemium Plan</Text></TouchableOpacity>
-
-//     <Text style={styles.bottomNote}>You can cancel your subscription anytime</Text>
-//   </ScrollView>
-// )};
 
 const PlansScreen = () => {
   const [selectedPlan, setSelectedPlan] = useState(null);
@@ -535,22 +442,66 @@ cardTitle: { fontSize: 16, fontWeight: '600', marginTop: 10, textAlign: 'center'
   },
   cardRow: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: 30,
+    flexWrap: 'wrap',
+    justifyContent: 'flex-start', // space-between pushes edge-to-edge
     marginTop: 10,
-   
+  
+},
+  // card: {
+  //   width: '30%',
+  //   backgroundColor: '#fff',
+  //   padding: 16,
+  //   marginVertical: 18,
+  //   borderRadius: 10,
+  //   alignItems: 'center',
+  //   elevation: 3,
+  //   borderTopWidth: 4,
+  // borderTopColor: '#FFD700', 
+  // },
+
+  cardGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    marginTop: 10,
   },
   card: {
-    width: '30%',
+    width: '45%',             // Reduced from 48% to allow margin space
+    marginHorizontal: 10,   
     backgroundColor: '#fff',
-    padding: 16,
-    marginVertical: 18,
     borderRadius: 10,
-    alignItems: 'center',
-    elevation: 3,
     borderTopWidth: 4,
-  borderTopColor: '#FFD700', 
+   borderTopColor: '#FFD700', 
+    padding: 20,
+    marginBottom: 16,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 4,
+    elevation: 2,
   },
+  
+  serviceGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    marginTop: 10,
+    marginHorizontal: 30,
+  },
+  serviceCard: {
+    width: '45%',
+    backgroundColor: '#fff',
+    padding: 10,
+    borderRadius: 8,
+    marginBottom: 10,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  
   cardSingle: {
     width: '30%',
     backgroundColor: '#fff',
@@ -563,9 +514,16 @@ cardTitle: { fontSize: 16, fontWeight: '600', marginTop: 10, textAlign: 'center'
   borderTopColor: '#FFD700', 
     borderTopColor: '#FFD700',
   },
+  cardImage: {
+    width: 40,
+    height: 40,
+    marginBottom: 10,
+    resizeMode: 'contain',
+    alignSelf: 'center',
+  },
   
   cardTitle: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: '700',
     marginTop: 8,
     textAlign: 'center',
@@ -575,7 +533,7 @@ cardTitle: { fontSize: 16, fontWeight: '600', marginTop: 10, textAlign: 'center'
     fontSize: 12,
     textAlign: 'center',
     color: '#777',
-    marginTop: 6,
+    marginTop: 4,
   },
   servicesContainer: {
     marginTop: 20,
@@ -602,17 +560,17 @@ cardTitle: { fontSize: 16, fontWeight: '600', marginTop: 10, textAlign: 'center'
     paddingHorizontal: 50,
     marginTop: 10,
   },
-  serviceCard: {
-    width: '30%',
-    backgroundColor: '#fff',
-    paddingVertical: 16,
-    paddingHorizontal: 6,
-    borderRadius: 10,
-    alignItems: 'center',
-    elevation: 3,
-    borderWidth: 2,
-  borderColor: '#FFD700', 
-  },
+  // serviceCard: {
+  //   width: '30%',
+  //   backgroundColor: '#fff',
+  //   paddingVertical: 16,
+  //   paddingHorizontal: 6,
+  //   borderRadius: 10,
+  //   alignItems: 'center',
+  //   elevation: 3,
+  //   borderWidth: 2,
+  // borderColor: '#FFD700', 
+  // },
   serviceImage: {
     width: 60,
     height: 60,

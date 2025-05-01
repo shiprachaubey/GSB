@@ -100,7 +100,6 @@ const styles = StyleSheet.create({
       fontSize: 20,
       fontWeight: '800',
       fontFamily: 'Frank Ruhl Libre',
-
       color: '#000',
       textAlign: 'center',
     },
@@ -110,7 +109,7 @@ const styles = StyleSheet.create({
       fontFamily: 'Frank Ruhl Libre',
       color: '#000',
       marginTop: -50,
-      
+      textAlign: 'center',
       
     },
     subTextBox: {

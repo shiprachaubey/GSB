@@ -71,7 +71,7 @@ const HeightScreen = ({ navigation }) => {
         {/* Top Image and Title */}
         <View style={styles.imageBox}>
           <Image source={require('../assets/images/circle.png')} style={styles.circleImage} resizeMode="contain" />
-          {/* <Image source={require('../assets/images/target.png')} style={styles.innerImage} resizeMode="contain" /> */}
+           <Image source={require('../assets/images/Bring.png')} style={styles.innerImage} resizeMode="contain" /> 
         </View>
 
         <Text style={styles.title}>What brings you here?</Text>
@@ -113,13 +113,13 @@ const styles = StyleSheet.create({
     marginTop: 80,
   },
   circleImage: {
-    width: 200,
-    height: 200,
+    width: 260,
+    height: 260,
   },
   innerImage: {
     position: 'absolute',
-    width: 120,
-    height: 120,
+    width: 170,
+    height: 150,
   },
   title: {
     fontSize: 24,
