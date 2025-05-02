@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   imageBox: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 80,
+    marginTop: 40,
   },
   circleImage: {
     width: 200,

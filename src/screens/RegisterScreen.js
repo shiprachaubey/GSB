@@ -105,17 +105,17 @@ const styles = StyleSheet.create({
   imageBox: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 20,
+    
   },
   circleImage: {
     width: 300,     // Increase width
-    height: 350,    // Increase height
+    height: 300,    // Increase height
     borderRadius: 150,  // Makes it circular if the image is square
   },
   innerImage: {
     position: 'absolute',
-    width: 120,
-    height: 120,
+    width: 100,
+    height: 100,
   },
   title: {
     fontSize: 24,

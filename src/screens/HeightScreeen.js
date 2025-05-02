@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image, Animated, FlatList } from 'react-native';
+// import { ScrollView } from 'react-native-gesture-handler';
 
 const HeightScreen = ({ navigation }) => {
   const [selectedConcern, setSelectedConcern] = useState(null);
@@ -66,37 +67,38 @@ const HeightScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Animated.View style={{ opacity: animation, transform: [{ scale: animation }] }}>
-
-        {/* Top Image and Title */}
-        <View style={styles.imageBox}>
-          <Image source={require('../assets/images/circle.png')} style={styles.circleImage} resizeMode="contain" />
-           <Image source={require('../assets/images/Bring.png')} style={styles.innerImage} resizeMode="contain" /> 
-        </View>
-
-        <Text style={styles.title}>What brings you here?</Text>
-        <Text style={styles.subtitle}>Select your primary health concern</Text>
-
-        {/* List of Options */}
-        <FlatList
-          data={concerns}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={renderItem}
-          contentContainerStyle={styles.optionsList}
-          showsVerticalScrollIndicator={false}
-        />
-
-      </Animated.View>
-
-      {/* Continue Button */}
-      <TouchableOpacity
-        style={[styles.continueButton, { backgroundColor: selectedConcern ? '#F7B500' : '#ccc' }]}
-        onPress={handleContinue}
-        disabled={!selectedConcern}
-      >
-        <Text style={styles.continueButtonText}>Continue</Text>
-      </TouchableOpacity>
-    </View>
+    <FlatList
+      data={concerns}
+      keyExtractor={(item) => item.id.toString()}
+      renderItem={renderItem}
+      contentContainerStyle={styles.flatListContainer}
+      ListHeaderComponent={
+        <Animated.View style={{ opacity: animation, transform: [{ scale: animation }] }}>
+          <View style={styles.imageBox}>
+            <Image source={require('../assets/images/circle.png')} style={styles.circleImage} resizeMode="contain" />
+            <Image source={require('../assets/images/Bring.png')} style={styles.innerImage} resizeMode="contain" />
+          </View>
+  
+          <Text style={styles.title}>What brings you here?</Text>
+          <Text style={styles.subtitle}>Select your primary health concern</Text>
+        </Animated.View>
+      }
+      ListFooterComponent={
+        <View style={{ marginBottom: 100 }} />
+      }
+      showsVerticalScrollIndicator={false}
+    />
+  
+    {/* Continue Button */}
+    <TouchableOpacity
+      style={[styles.continueButton, { backgroundColor: selectedConcern ? '#F7B500' : '#ccc' }]}
+      onPress={handleContinue}
+      disabled={!selectedConcern}
+    >
+      <Text style={styles.continueButtonText}>Continue</Text>
+    </TouchableOpacity>
+  </View>
+  
   );
 };
 
@@ -110,11 +112,11 @@ const styles = StyleSheet.create({
   imageBox: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 80,
+    marginTop: 0,
   },
   circleImage: {
-    width: 260,
-    height: 260,
+    width: 220,
+    height: 220,
   },
   innerImage: {
     position: 'absolute',
@@ -147,6 +149,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ccc',
   },
+  flatListContainer: {
+    paddingHorizontal: 24,
+    paddingTop: 40,
+    paddingBottom: 20,
+  },
+  
   selectedOptionBox: {
     backgroundColor: '#FFF8E1',
     borderColor: '#F7B500',

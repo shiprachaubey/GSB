@@ -129,17 +129,18 @@ const styles = StyleSheet.create({
   imageBox: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 80,
+    marginTop: 20,
     marginBottom: 20,
   },
   circleImage: {
-    width: 260,
-    height: 260,
+    width: 220,
+    height: 220,
+   
   },
   innerImage: {
     position: 'absolute',
-    width: 150,
-    height: 200,
+    width: 130,
+    height: 180,
   },
   title: {
     fontSize: 24,

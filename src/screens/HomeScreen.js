@@ -19,9 +19,10 @@ const { width } = Dimensions.get('window');
 
 const carouselItems = [
   { title: 'Mediation and Fitness Video' ,  image: require('../assets/images/fitness.png')},
-  { title: 'Connect with doctors' ,image: require('../assets/images/doctor.jpg') },
-  { title: 'Customised Diet Plans', image: require('../assets/images/dietplan.jpeg') },
-  { title: 'Follow us More ' , image: require('../assets/images/followus.webp')},
+  { title: 'Connect with doctors' ,image: require('../assets/images/doctors.webp') },
+  { title: 'Customised Diet Plans', image: require('../assets/images/diet.webp') },
+  { title: 'Free from Medecines ' , image: require('../assets/images/tablet.jpg')},
+  { title: 'Follow us More ' , image: require('../assets/images/follow.jpg')},
 ];
 
 
@@ -86,7 +87,7 @@ const HomeScreen = () => {
   ];
   const services = [
     { title: 'GSB Pathy services', image: require('../assets/images/pathy.jpeg') ,  navigateTo: 'GSBPathy' }, // You will later set image
-    { title: 'Consultancy',image: require('../assets/images/doctorconsult.jpg'), navigateTo: 'Consultancy' },
+    { title: 'Consultancy',image: require('../assets/images/consult.jpg'), navigateTo: 'Consultancy' },
     { title: 'Supplements', image: require('../assets/images/supplement.jpeg'), navigateTo: 'Supplement' },
     { title: 'Fitness', image: require('../assets/images/fitnesgym.jpeg'), navigateTo: 'Fitness' },
   ];
@@ -463,24 +464,25 @@ cardTitle: { fontSize: 16, fontWeight: '600', marginTop: 10, textAlign: 'center'
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
+    paddingHorizontal: 12,
     marginTop: 10,
   },
   card: {
-    width: '45%',             // Reduced from 48% to allow margin space
-    marginHorizontal: 10,   
+    width: '48%',
     backgroundColor: '#fff',
     borderRadius: 10,
     borderTopWidth: 4,
-   borderTopColor: '#FFD700', 
-    padding: 20,
+    borderTopColor: '#FFD700',
+    padding: 16,
     marginBottom: 16,
+    alignItems: 'center',
     shadowColor: '#000',
     shadowOpacity: 0.1,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 4,
     elevation: 2,
   },
-  
+ 
   serviceGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
