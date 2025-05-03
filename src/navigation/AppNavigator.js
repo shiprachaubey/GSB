@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import LogoScreen from '../screens/LogoScreen';
 import SplashScreen from '../screens/SplashScreen';
 import PlanScreen from '../screens/PlanScreen';
 import JourneyScreen from '../screens/JourneyScreen';
@@ -35,9 +35,10 @@ const Stack = createNativeStackNavigator();
 const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Splash">
+      <Stack.Navigator initialRouteName="Logo">
+  
+  <Stack.Screen name="Logo" component={LogoScreen} options={{ headerShown: false }} />
   <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
-
   <Stack.Screen name="Journey" component={JourneyScreen} options={{ headerShown: false }} />
   <Stack.Screen name="Control" component={ControlScreen} options={{ headerShown: false }} />
   <Stack.Screen name="Eat" component={EatScreen} options={{ headerShown: false }} />
