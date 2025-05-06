@@ -13,7 +13,7 @@ export default function AppEntry({ navigation }) {
         if (isLoggedIn === 'true') {
           navigation.replace('Home');
         } else {
-          navigation.replace('Logo'); // your logo screen
+          navigation.replace('Logo'); 
         }
       } catch (error) {
         console.error('Login check error:', error);

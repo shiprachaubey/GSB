@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 50,
+        marginTop: 30,
         marginBottom: 20,
       },
     image: {
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
       fontWeight: '400',
       fontFamily: 'Frank Ruhl Libre',
       color: '#000',
-      marginTop: -40,
+      marginTop: -30,
       textAlign: 'center',
       
     },

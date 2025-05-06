@@ -58,7 +58,7 @@ useEffect(() => {
   <Ionicons name="arrow-back" size={24} color="#F7B500" onPress={() => navigation.goBack()} />
   <Text style={styles.headerTitle}>Products</Text>
 
-  <TouchableOpacity style={styles.cartIconWrapper} onPress={() => navigation.navigate('Cart')}>
+  <TouchableOpacity style={styles.cartIconWrapper} onPress={() => navigation.navigate('Checkout')}>
     <Ionicons name="cart" size={24} color="#F7B500" />
     {cartItems.length > 0 && (
       <View style={styles.badge}>

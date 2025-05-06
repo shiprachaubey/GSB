@@ -75,7 +75,7 @@ useFocusEffect(
       <View style={styles.actions}>
         <TouchableOpacity style={styles.buyButton} onPress={() => {
     
-    navigation.navigate('Cart');
+    navigation.navigate('Checkout');
   }}>
           <Text style={styles.buyButtonText}>Buy Now</Text>
         </TouchableOpacity>
