@@ -98,17 +98,18 @@ const styles = StyleSheet.create({
     },
     title: {
       fontSize: 20,
-      fontWeight: '800',
+      fontWeight: '700',
       fontFamily: 'Frank Ruhl Libre',
       color: '#000',
       textAlign: 'center',
+      marginTop: -40,
     },
     subtitle: {
       fontSize: 15,
       fontWeight: '400',
       fontFamily: 'Frank Ruhl Libre',
       color: '#000',
-      marginTop: -50,
+      marginTop: -40,
       textAlign: 'center',
       
     },

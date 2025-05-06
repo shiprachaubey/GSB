@@ -12,10 +12,10 @@ const MeditationScreen = () => {
   const scrollRef = useRef(null);
   const [visibleVideos, setVisibleVideos] = useState({});
 
-  const pdfs = [
-    { title: 'Demo pdf', url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf' },
-    { title: 'Demo pdf', url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf' },
-  ];
+  // const pdfs = [
+  //   { title: 'Demo pdf', url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf' },
+  //   { title: 'Demo pdf', url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf' },
+  // ];
 
   const videos = [
     { title: 'Demo Video 1', url: 'https://www.w3schools.com/html/mov_bbb.mp4' },
@@ -59,7 +59,7 @@ const MeditationScreen = () => {
       >
         
         {/* PDFs Section */}
-        <Text style={styles.sectionTitle}>Pdfs</Text>
+        {/* <Text style={styles.sectionTitle}>Pdfs</Text>
         <View style={styles.pdfRow}>
           {pdfs.map((item, idx) => (
             <View key={idx} style={styles.pdfCard}>
@@ -71,7 +71,7 @@ const MeditationScreen = () => {
               </TouchableOpacity>
             </View>
           ))}
-        </View>
+        </View> */}
 
         {/* Videos Section */}
         <Text style={styles.sectionTitle}>Videos</Text>

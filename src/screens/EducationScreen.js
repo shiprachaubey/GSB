@@ -12,10 +12,7 @@ const EducationScreen = () => {
   const scrollRef = useRef(null);
   const [visibleVideos, setVisibleVideos] = useState({});
 
-  const pdfs = [
-    { title: 'Demo pdf', url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf' },
-    { title: 'Demo pdf', url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf' },
-  ];
+ 
 
   const videos = [
     { title: 'Demo Video 1', url: 'https://www.w3schools.com/html/mov_bbb.mp4' },
@@ -58,20 +55,7 @@ const EducationScreen = () => {
         contentContainerStyle={styles.scrollContent}
       >
         
-        {/* PDFs Section */}
-        <Text style={styles.sectionTitle}>Pdfs</Text>
-        <View style={styles.pdfRow}>
-          {pdfs.map((item, idx) => (
-            <View key={idx} style={styles.pdfCard}>
-              <Ionicons name="document" size={50} color="red" />
-              <Text style={styles.pdfTitle}>{item.title}</Text>
-              <TouchableOpacity style={styles.downloadButton} onPress={() => openPdf(item.url)}>
-                <Ionicons name="download" size={16} color="#fff" />
-                <Text style={styles.downloadText}>Download</Text>
-              </TouchableOpacity>
-            </View>
-          ))}
-        </View>
+      
 
         {/* Videos Section */}
         <Text style={styles.sectionTitle}>Videos</Text>

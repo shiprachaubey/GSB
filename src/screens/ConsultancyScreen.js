@@ -35,7 +35,7 @@ const ConsultancyScreen = () => {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back" size={24} color="#F7B500" />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Consultant</Text>
+        <Text style={styles.headerTitle}>Consultancy</Text>
       </View>
 
       <ScrollView contentContainerStyle={{ padding: 16 }}>
@@ -45,7 +45,7 @@ const ConsultancyScreen = () => {
           <View style={{ marginLeft: 10 }}>
             <Text style={styles.infoTitle}>How We Can Help</Text>
             <Text style={styles.infoText}>
-              Consultants from our top doctors and certified members are here to help you on your journey of <Text style={{ fontWeight: 'bold', color: '#F7B500' }}>GSB</Text>. Fill out the form below, and we’ll connect you with the right expert.
+            Get Expert Guidance for Your Healing Journey
             </Text>
           </View>
         </View>

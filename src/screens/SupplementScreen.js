@@ -1,8 +1,10 @@
-import React from 'react';
+import {React, useState, useEffect }from 'react';
 import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, StatusBar } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+
+
 
 const SupplementsScreen = () => {
   const navigation = useNavigation();
@@ -29,30 +31,69 @@ const SupplementsScreen = () => {
       image: require('../assets/images/patanjali.png'), 
     },
   ];
+  const [cartItems, setCartItems] = useState([]);
+
+useEffect(() => {
+  const loadCart = async () => {
+    const stored = await AsyncStorage.getItem('@cartItems');
+    const items = stored ? JSON.parse(stored) : [];
+    setCartItems(items);
+  };
+
+  const unsubscribe = navigation.addListener('focus', loadCart);
+  return unsubscribe;
+}, [navigation]);
+
 
   return (
      <SafeAreaView style={{flex:1}}> 
         <StatusBar backgroundColor={'#fff'} barStyle={'dark-content'}/>
     <View style={styles.container}>
       {/* Header */}
-      <View style={styles.header}>
+      {/* <View style={styles.header}>
         <Ionicons name="arrow-back" size={24} color="#F7B500" onPress={() => navigation.goBack()} />
         <Text style={styles.headerTitle}>Products</Text>
+      </View> */}
+<View style={styles.header}>
+  <Ionicons name="arrow-back" size={24} color="#F7B500" onPress={() => navigation.goBack()} />
+  <Text style={styles.headerTitle}>Products</Text>
+
+  <TouchableOpacity style={styles.cartIconWrapper} onPress={() => navigation.navigate('Cart')}>
+    <Ionicons name="cart" size={24} color="#F7B500" />
+    {cartItems.length > 0 && (
+      <View style={styles.badge}>
+        <Text style={styles.badgeText}>{cartItems.length}</Text>
       </View>
+    )}
+  </TouchableOpacity>
+</View>
 
       {/* Products */}
       <ScrollView contentContainerStyle={styles.productsContainer}>
         <View style={styles.grid}>
-          {products.map((item, idx) => (
-            <View key={idx} style={styles.card}>
-              <Image source={item.image} style={styles.productImage} resizeMode="contain" />
-              <Text style={styles.productTitle}>{item.title}</Text>
-              <Text style={styles.productPrice}>{item.price}</Text>
-              <TouchableOpacity style={styles.buyButton}>
+        {products.map((item, idx) => (
+      <TouchableOpacity
+       key={idx}
+      style={styles.card}
+      onPress={() => navigation.navigate('ProductDetails', { product: item })}
+      activeOpacity={0.9}
+  >
+    <Image source={item.image} style={styles.productImage} resizeMode="contain" />
+    <Text style={styles.productTitle}>{item.title}</Text>
+    <Text style={styles.productPrice}>{item.price}</Text>
+
+    
+    <TouchableOpacity style={styles.buyButton} 
+      onPress={() => navigation.navigate('ProductDetails', { product: item })}
+      activeOpacity={0.9}>
+      
                 <Text style={styles.buyButtonText}>Buy Now</Text>
               </TouchableOpacity>
-            </View>
-          ))}
+     
+    
+  </TouchableOpacity>
+))}
+
         </View>
       </ScrollView>
     </View>
@@ -67,6 +108,27 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f7fafa', // very light background
   },
+  cartIconWrapper: {
+    marginLeft: 'auto',
+    position: 'relative',
+  },
+  badge: {
+    position: 'absolute',
+    right: -8,
+    top: -6,
+    backgroundColor: 'red',
+    width: 16,
+    height: 16,
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  badgeText: {
+    color: '#fff',
+    fontSize: 10,
+    fontWeight: 'bold',
+  },
+  
   header: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -124,4 +186,23 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: '600',
   },
+  buttonRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: 6,
+  },
+  // cartButton: {
+  //   backgroundColor: '#fff',
+    
+  //   paddingVertical: 8,
+  //   borderRadius: 6,
+  //   alignItems: 'center',
+  //   flex: 1,
+  // },
+  // cartButtonText: {
+  //   color: '#F7B500',
+  //   fontWeight: '600',
+  //   textAlign: 'center',
+  // },
+  
 });

@@ -31,6 +31,8 @@ import FitnessScreen from '../screens/FitnessScreen';
 import DietPlanScreen from '../screens/DietPlanScreen';
 import SuccessStoriesScreen from '../screens/SuccessScreen';
 import AppEntry from '../screens/AppEntry';
+import ProductDetailsScreen from '../screens/ProductDetailsScreen';
+import CheckoutScreen from '../screens/CheckOutScreen';
 const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
@@ -67,8 +69,10 @@ const AppNavigator = () => {
   <Stack.Screen name="SucessStories" component={SuccessStoriesScreen} options={{ headerShown: false }} />
   <Stack.Screen name="MeditationScreen" component={MeditationScreen} options={{ headerShown: false }} />
   <Stack.Screen name="Fitness" component={FitnessScreen} options={{ headerShown: false }} />
-
-
+  <Stack.Screen name="ProductDetails" component={ProductDetailsScreen} options={{ headerShown: false }} />
+ 
+  <Stack.Screen name="Checkout" component={CheckoutScreen} options={{ headerShown: false }} />
+ 
 
 </Stack.Navigator>
 
