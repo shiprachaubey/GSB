@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet, Dimensions, ScrollView } from 'react-native';
 const { width, height } = Dimensions.get('window');
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SignInScreen = ({ navigation }) => {
   const [fullName, setFullName] = useState('');
@@ -10,7 +11,7 @@ const SignInScreen = ({ navigation }) => {
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [errors, setErrors] = useState({});
 
-  const handleSignIn = () => {
+  const handleSignIn = async () => {
     const newErrors = {};
     const phoneRegex = /^[0-9]{10}$/;
   
@@ -28,9 +29,15 @@ const SignInScreen = ({ navigation }) => {
       setErrors(newErrors);
     } else {
       setErrors({});
-      navigation.navigate('OTP');
+      try {
+        await AsyncStorage.setItem('isLoggedIn', 'true');
+        navigation.replace('Home'); // or 'OTP' if that's the next intended screen
+      } catch (error) {
+        console.error('❌ Error saving login status:', error);
+      }
     }
   };
+  
   
   return (
     <View style={styles.container}>

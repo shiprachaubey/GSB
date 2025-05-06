@@ -30,13 +30,14 @@ import EducationScreen from '../screens/EducationScreen';
 import FitnessScreen from '../screens/FitnessScreen';
 import DietPlanScreen from '../screens/DietPlanScreen';
 import SuccessStoriesScreen from '../screens/SuccessScreen';
+import AppEntry from '../screens/AppEntry';
 const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Logo">
-  
+      <Stack.Navigator initialRouteName="AppEntry">
+      <Stack.Screen name="AppEntry" component={AppEntry} options={{ headerShown: false }} />
   <Stack.Screen name="Logo" component={LogoScreen} options={{ headerShown: false }} />
   <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
   <Stack.Screen name="Journey" component={JourneyScreen} options={{ headerShown: false }} />
