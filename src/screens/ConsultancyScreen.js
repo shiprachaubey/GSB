@@ -3,6 +3,8 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Alert 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import axios from 'axios';
+
 const ConsultancyScreen = () => {
   const navigation = useNavigation();
 
@@ -12,19 +14,34 @@ const ConsultancyScreen = () => {
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
 
-  const handleSubmit = () => {
-    if (!firstName.trim() || !lastName.trim() || !email.trim() || !phone.trim() || !message.trim()) {
-      Alert.alert('Validation Error', 'Please fill all the fields!');
-      return;
-    }
+ const handleSubmit = async () => {
+  if (!firstName.trim() || !lastName.trim() || !email.trim() || !phone.trim() || !message.trim()) {
+    Alert.alert('Validation Error', 'Please fill all the fields!');
+    return;
+  }
 
-    Alert.alert('Request Submitted', 'Thank you! Our consultant will contact you soon.', [
-      {
-        text: 'OK',
-        onPress: () => navigation.goBack(),
-      }
-    ]);
-  };
+  try {
+    const res = await axios.post('http://192.168.1.46:9000/api/consultancy/submit', {
+      firstName,
+      lastName,
+      email,
+      phoneNumber: phone,
+      message,
+    });
+
+    if (res.status === 201) {
+      Alert.alert('Request Submitted', 'Thank you! Our consultant will contact you soon.', [
+        { text: 'OK', onPress: () => navigation.goBack() },
+      ]);
+    } else {
+      Alert.alert('Submission Failed', 'Please try again later.');
+    }
+  } catch (err) {
+    console.error('Submission error:', err.message);
+    Alert.alert('Error', 'Failed to submit your request. Please check your connection.');
+  }
+};
+
 
   return (
      <SafeAreaView style={{flex:1}}> 
