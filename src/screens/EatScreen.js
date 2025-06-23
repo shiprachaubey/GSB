@@ -37,7 +37,7 @@ const JourneyScreen = ({ navigation }) => {
       </View>
 
       <View style={styles.textBox}>
-        <Text style={styles.subtitle}>Experience the power of AI driven Ayurveda, backed by clinical research, for holistic healing and long term wellness- without medecines.</Text>
+        <Text style={styles.subtitle}>Experience the power of AI driven Ayurveda, backed by clinical research, for holistic healing and long term wellness- without medicines.</Text>
       </View>
       {/* 🔸 Subtext */}
       <View style={styles.subTextBox}>
@@ -63,7 +63,7 @@ const JourneyScreen = ({ navigation }) => {
       style={styles.nextButtonText} 
       numberOfLines={1}
       adjustsFontSizeToFit={true}>
-      Begin Your Medicine Free Journey
+      Start My Healing
     </Text>
 </TouchableOpacity>
 

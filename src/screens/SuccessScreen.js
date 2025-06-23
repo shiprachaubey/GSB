@@ -198,7 +198,7 @@ const SuccessStoriesScreen = () => {
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const res = await axios.get('http://192.168.1.46:9000/api/videos/all-videos'); // Replace with your IP
+        const res = await axios.get('http://13.60.227.51:9000/api/videos/all-videos'); // Replace with your IP
         const filtered = res.data.videos.filter(
           (v) => v.category?.toLowerCase() === 'success stories'
         );

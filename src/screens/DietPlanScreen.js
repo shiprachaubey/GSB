@@ -139,7 +139,7 @@ const DietPlanScreen = () => {
   useEffect(() => {
     const fetchPdfs = async () => {
       try {
-        const res = await axios.get('http://192.168.1.46:9000/api/dietplans/get-pdf'); // ✅ Replace with your local IP
+        const res = await axios.get('http://13.60.227.51:9000/api/dietplans/get-pdf'); // ✅ Replace with your local IP
         setPdfs(res.data.data || []);
       } catch (err) {
         console.error('Failed to fetch diet plans:', err.message);

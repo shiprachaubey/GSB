@@ -94,7 +94,7 @@ const OrdersScreen = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await axios.get('http://192.168.1.46:9000/api/orders/user/demo-user-id');
+        const res = await axios.get('http://13.60.227.51:9000/api/orders/user/demo-user-id');
         setOrders(res.data.orders || []);
       } catch (err) {
         console.error('❌ Error fetching orders:', err);

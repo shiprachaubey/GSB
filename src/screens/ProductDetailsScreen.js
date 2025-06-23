@@ -227,7 +227,7 @@ const [cartItems, setCartItems] = useState([]);
 
 const handleAddToCart = async () => {
   try {
-    await axios.post('http://192.168.1.46:9000/api/cart/add', {
+    await axios.post('http://13.60.227.51:9000/api/cart/add', {
       userId: 'demo-user-id',
       product: {
         productId: product._id,
@@ -240,7 +240,7 @@ const handleAddToCart = async () => {
     Alert.alert('✅ Success', 'Product added to cart via API');
 
     // 🔄 Refresh cart count from backend
-    const res = await axios.get('http://192.168.1.46:9000/api/cart/demo-user-id');
+    const res = await axios.get('http://13.60.227.51:9000/api/cart/demo-user-id');
     const items = res.data.cart?.items || [];
     setCartItems(items);
     setCartCount(items.length);  // ✅ This updates the cart icon badge
@@ -255,7 +255,7 @@ const handleAddToCart = async () => {
     useCallback(() => {
    const loadCart = async () => {
   try {
-    const res = await axios.get('http://192.168.1.46:9000/api/cart/demo-user-id');
+    const res = await axios.get('http://13.60.227.51:9000/api/cart/demo-user-id');
     setCartItems(res.data.cart?.items || []);
   } catch (error) {
     console.error('Error fetching cart:', error);

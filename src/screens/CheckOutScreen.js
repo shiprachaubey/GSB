@@ -52,7 +52,7 @@ const total = cartItems.reduce((sum, item) => {
   }
 
   try {
-    const response = await fetch('http://192.168.1.46:9000/api/orders/place-order', {
+    const response = await fetch('http://13.60.227.51:9000/api/orders/place-order', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

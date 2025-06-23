@@ -36,7 +36,7 @@ const JourneyScreen = ({ navigation }) => {
       </View>
 
       <View style={styles.textBox}>
-        <Text style={styles.subtitle}>Experience the power of ancient heaking with modern science and unique blend of traditional wisdom scientific research brings you best of both worlds.</Text>
+        <Text style={styles.subtitle}>Experience the power of ancient healing with modern science and unique blend of traditional wisdom scientific research brings you best of both worlds.</Text>
       </View>
       {/* 🔸 Subtext */}
       <View style={styles.subTextBox}>
@@ -56,7 +56,7 @@ const JourneyScreen = ({ navigation }) => {
 
   <TouchableOpacity style={styles.nextButton}
   onPress={() => navigation.navigate('Control')}>
-    <Text style={styles.nextButtonText}>Start </Text>
+    <Text style={styles.nextButtonText}>Start Now</Text>
   </TouchableOpacity>
 </View>
 

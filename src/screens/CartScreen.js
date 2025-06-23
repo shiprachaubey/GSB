@@ -191,7 +191,7 @@ const CartScreen = () => {
 
   const fetchCartItems = async () => {
     try {
-      const res = await axios.get('http://192.168.1.46:9000/api/cart/demo-user-id'); // replace with real user ID
+      const res = await axios.get('http://13.60.227.51:9000/api/cart/demo-user-id'); // replace with real user ID
       const items = res.data.cart?.items || [];
       setCartItems(items);
     } catch (error) {
@@ -202,7 +202,7 @@ const CartScreen = () => {
 
   const removeItem = async (productId) => {
     try {
-      await axios.delete(`http://192.168.1.46:9000/api/cart/demo-user-id/remove/${productId}`);
+      await axios.delete(`http://13.60.227.51:9000/api/cart/demo-user-id/remove/${productId}`);
       fetchCartItems(); // refresh
     } catch (err) {
       console.error('❌ Error removing item:', err);

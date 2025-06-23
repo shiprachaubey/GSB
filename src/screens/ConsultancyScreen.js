@@ -21,7 +21,7 @@ const ConsultancyScreen = () => {
   }
 
   try {
-    const res = await axios.post('http://192.168.1.46:9000/api/consultancy/submit', {
+    const res = await axios.post('http://13.60.227.51:9000/api/consultancy/submit', {
       firstName,
       lastName,
       email,

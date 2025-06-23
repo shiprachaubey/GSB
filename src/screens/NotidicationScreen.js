@@ -10,7 +10,7 @@ const NotificationsList = () => {
 
   const fetchNotifications = async () => {
     try {
-      const res = await axios.get('http://192.168.1.46:9000/api/notifications/notifications'); // replace with your IP
+      const res = await axios.get('http://13.60.227.51:9000/api/notifications/notifications'); // replace with your IP
       setNotifications(res.data.data || []);
     } catch (err) {
       console.error('Error fetching notifications:', err.message);

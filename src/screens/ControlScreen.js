@@ -32,11 +32,11 @@ const JourneyScreen = ({ navigation }) => {
 
       {/* 🔸 Text Box */}
       <View style={styles.textBox}>
-        <Text style={styles.title}>Bina Dawai Lifestyle Diseases kr Safai</Text>
+        <Text style={styles.title}>Bina Dawai Lifestyle Diseases ki Safai</Text>
       </View>
 
       <View style={styles.textBox}>
-        <Text style={styles.subtitle}>Heal lifestyle diseases like IBS, colitis, and Crohn's naturally with Ayurveda, yoga, and personalised nutrition. A medicine-free approach for long term gut health, balance, and overall well-being</Text>
+        <Text style={styles.subtitle}>Heal lifestyle diseases like IBS, Colitis, and Crohn's naturally with Ayurveda, yoga, and personalised nutrition. A medicine-free approach for long term gut health, balance, and overall well-being</Text>
       </View>
       {/* 🔸 Subtext */}
       <View style={styles.subTextBox}>
@@ -56,7 +56,7 @@ const JourneyScreen = ({ navigation }) => {
 
   <TouchableOpacity style={styles.nextButton}
   onPress={() => navigation.navigate('Eat')}>
-    <Text style={styles.nextButtonText}>Next </Text>
+    <Text style={styles.nextButtonText}>Start Now</Text>
   </TouchableOpacity>
 </View>
 

@@ -10,7 +10,7 @@
 // useEffect(() => {
 //   const fetchProducts = async () => {
 //     try {
-//       const res = await axios.get('http://192.168.1.46:9000/api/products/products');
+//       const res = await axios.get('http://13.60.227.51:9000/api/products/products');
 //       setProducts(res.data.products || []);
 //     } catch (error) {
 //       console.error('Failed to fetch products:', error.message);
@@ -224,7 +224,7 @@ const SupplementsScreen = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get('http://192.168.1.46:9000/api/products/products');
+        const res = await axios.get('http://13.60.227.51:9000/api/products/products');
         setProducts(res.data.products || []);
       } catch (error) {
         console.error('Failed to fetch products:', error.message);
@@ -237,7 +237,7 @@ const SupplementsScreen = () => {
 useEffect(() => {
   const loadCart = async () => {
     try {
-      const res = await axios.get('http://192.168.1.46:9000/api/cart/demo-user-id');
+      const res = await axios.get('http://13.60.227.51:9000/api/cart/demo-user-id');
       const items = res.data.cart?.items || [];
       setCartItems(items);
     } catch (error) {
