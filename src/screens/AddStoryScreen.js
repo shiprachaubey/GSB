@@ -1,9 +1,10 @@
 
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image, TextInput, StyleSheet, Alert } from 'react-native';
+import { View, Text, StatusBar, TouchableOpacity, Image, TextInput, StyleSheet, Alert } from 'react-native';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const AddStoryScreen = () => {
   const [beforeImage, setBeforeImage] = useState(null);
@@ -77,6 +78,8 @@ const AddStoryScreen = () => {
   };
 
   return (
+     <SafeAreaView style={styles.container}>
+          <StatusBar backgroundColor={'#fff'} barStyle={'dark-content'} />
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
@@ -148,13 +151,14 @@ const AddStoryScreen = () => {
         <Text style={styles.shareButtonText}>Share My Story ➔</Text>
       </TouchableOpacity>
     </View>
+    </SafeAreaView>
   );
 };
 
 export default AddStoryScreen;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff', padding: 16 },
+  container: { flex: 1, backgroundColor: '#fff', padding: 12 },
   header: { flexDirection: 'row', alignItems: 'center', marginBottom: 10 },
   headerTitle: { fontSize: 18, fontWeight: 'bold', marginLeft: 12 },
   tipBox: { backgroundColor: '#fff8e1', padding: 12, borderRadius: 8, flexDirection: 'row', alignItems: 'center', marginBottom: 16 },

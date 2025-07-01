@@ -49,7 +49,7 @@ const PersonalInfoScreen = ({navigation}) => {
         </TouchableOpacity>
 
         <View style={styles.form}>
-          <InputField placeholder="Enter your full name" label="Full Name" value={fullName} onChangeText={setFullName} />
+          <InputField placeholder="Enter your full name"  placeholderTextColor="#999" label="Full Name" value={fullName} onChangeText={setFullName} />
           <InputField placeholder="Enter your phone number" label="Phone Number" value={phoneNumber} onChangeText={setPhoneNumber} keyboardType="phone-pad" />
           <InputField placeholder="Age" label="Age" value={age} onChangeText={setAge} keyboardType="numeric" />
           <InputField placeholder="Weight (kg)" label="Weight" value={weight} onChangeText={setWeight} keyboardType="numeric" />

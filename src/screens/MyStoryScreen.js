@@ -1,12 +1,15 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, Text, StatusBar, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const MyStoriesScreen = () => {
   const navigation = useNavigation();
 
   return (
+     <SafeAreaView style={styles.container}>
+              <StatusBar backgroundColor={'#fff'} barStyle={'dark-content'} />
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
@@ -26,6 +29,7 @@ const MyStoriesScreen = () => {
         </TouchableOpacity>
       </View>
     </View>
+    </SafeAreaView>
   );
 };
 

@@ -1,10 +1,10 @@
 
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet, Modal, Alert, PermissionsAndroid, Platform } from 'react-native';
+import { View, Text,StatusBar, TextInput, TouchableOpacity, Image, StyleSheet, Modal, Alert, PermissionsAndroid, Platform } from 'react-native';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { useNavigation } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
+import { SafeAreaView } from 'react-native-safe-area-context';
 const NewDailyUpdateScreen = () => {
   const navigation = useNavigation();
   const [image, setImage] = useState(null);
@@ -60,6 +60,8 @@ const NewDailyUpdateScreen = () => {
   };
 
   return (
+     <SafeAreaView style={styles.container}>
+      <StatusBar backgroundColor={'#fff'} barStyle={'dark-content'} />
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
@@ -141,6 +143,7 @@ const NewDailyUpdateScreen = () => {
       </Modal>
 
     </View>
+    </SafeAreaView>
   );
 };
 

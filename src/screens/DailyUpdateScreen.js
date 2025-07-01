@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList } from 'react-native';
+import { View, StatusBar, Text, StyleSheet, Image, TouchableOpacity, FlatList } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context'; 
 
 const DailyUpdatesScreen = () => {
   const navigation = useNavigation();
@@ -30,6 +31,8 @@ const DailyUpdatesScreen = () => {
   );
 
   return (
+        <SafeAreaView style={styles.container}>
+          <StatusBar backgroundColor={'#fff'} barStyle={'dark-content'} />
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
@@ -52,6 +55,7 @@ const DailyUpdatesScreen = () => {
         <Ionicons name="add" size={30} color="#fff" />
       </TouchableOpacity>
     </View>
+    </SafeAreaView>
   );
 };
 
